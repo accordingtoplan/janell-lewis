@@ -14,6 +14,9 @@
   --bone-dim:#4E463C;
   --gold:#8A5A28;           /* deeper bronze for light ground */
   --hairline:rgba(22,19,16,.18);
+  --surface-a:#C9B9A4;      /* base */
+  --surface-b:#BFAE96;      /* one shade deeper */
+  --surface-c:#B5A288;      /* two deeper */
   --max:1280px;
 }
 [data-theme="dark"]{
@@ -23,6 +26,9 @@
   --bone-dim:#BDB4A7;
   --gold:#B78B4E;
   --hairline:rgba(240,234,225,.14);
+  --surface-a:#382D22;
+  --surface-b:#3F3326;
+  --surface-c:#463A2B;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -60,7 +66,9 @@ h1{font-family:'Gloock',serif;font-weight:400;font-size:clamp(58px,8.5vw,128px);
 
 
 /* sections */
-section{padding:clamp(80px,10vw,140px) 0}
+section{padding:clamp(80px,10vw,140px) 0;transition:background .35s}
+#work,#exhibitions{background:var(--surface-b)}
+#press{background:var(--surface-c)}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:clamp(40px,5vw,72px)}
 h2{font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);letter-spacing:-.01em}
 .sec-head .mono{color:var(--bone-dim)}
