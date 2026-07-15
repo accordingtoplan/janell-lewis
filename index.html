@@ -8,12 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#0E0D0C;          /* kiln dark */
-  --black-2:#161513;
-  --bone:#EDE9E2;           /* fired bone white */
+  --black:#231B14;          /* dark clay */
+  --black-2:#2C231B;
+  --bone:#F0EAE1;           /* fired bone white */
   --bone-dim:#A9A49B;
   --gold:#B78B4E;           /* bronze glaze accent */
-  --hairline:rgba(237,233,226,.14);
+  --hairline:rgba(240,234,225,.14);
   --max:1280px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -44,11 +44,8 @@ h1{font-family:'Gloock',serif;font-weight:400;font-size:clamp(58px,8.5vw,128px);
 .hero-text p.lede{margin-top:36px;max-width:42ch;font-size:clamp(17px,1.4vw,20px);color:var(--bone-dim)}
 .hero-img{position:relative;overflow:hidden;background:var(--black-2)}
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:.94}
-.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,12,.55),transparent 40%)}
-.scale-rule{position:absolute;left:0;top:0;bottom:0;width:52px;border-right:1px solid var(--hairline);display:flex;flex-direction:column;justify-content:space-between;padding:16px 0;background:color-mix(in srgb,var(--black) 45%,transparent);z-index:2}
-.scale-rule span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--bone);writing-mode:vertical-rl;transform:rotate(180deg);margin:0 auto;letter-spacing:.12em}
-.scale-rule i{display:block;width:14px;height:1px;background:var(--gold);margin:0 auto}
-.hero-img figcaption{position:absolute;left:68px;bottom:18px;z-index:2;color:var(--bone);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(35,27,20,.55),transparent 40%)}
+.hero-img figcaption{position:absolute;left:18px;bottom:18px;z-index:2;color:var(--bone);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 
 /* statement band */
 .band{padding:clamp(80px,10vw,140px) 0;border-bottom:1px solid var(--hairline);text-align:center}
@@ -139,9 +136,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     </div>
     <figure class="hero-img">
       <img src="img/studio.jpg" alt="Janell Lewis working on a life-size clay figure in her studio, with a large bird sculpture nearby">
-      <div class="scale-rule" aria-hidden="true">
-        <i></i><span>7 ft</span><i></i><span>6 ft</span><i></i><span>5 ft</span><i></i><span>4 ft</span><i></i><span>3 ft</span><i></i><span>2 ft</span><i></i><span>1 ft</span><i></i>
-      </div>
       <figcaption>Studio 15 &middot; AMOCA Ceramics Studio &middot; Pomona</figcaption>
     </figure>
   </div>
