@@ -128,16 +128,17 @@ h2{font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);l
 }
 
 /* lightbox */
-.lb{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--black) 92%,black);display:none;align-items:center;justify-content:center;flex-direction:column}
+.lb{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--black) 94%,black);display:none;align-items:center;justify-content:center;flex-direction:column;overflow:hidden}
 .lb.open{display:flex}
-.lb img{max-width:min(92vw,1600px);max-height:82vh;object-fit:contain;box-shadow:0 24px 80px rgba(0,0,0,.4)}
+.lb .lb-strip{display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,48px);width:100vw}
+.lb .lb-strip img{object-fit:contain;transition:opacity .35s,transform .35s}
+.lb .lb-main{max-width:min(72vw,1400px);max-height:80vh}
+.lb .lb-side{max-height:62vh;max-width:16vw;opacity:.35;cursor:pointer;flex:0 0 auto}
+.lb .lb-side:hover{opacity:.6}
 .lb .lb-cap{margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone)}
-.lb button{position:absolute;background:none;border:none;color:var(--bone);cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:14px}
-.lb button:hover{color:var(--gold)}
-.lb .lb-close{top:18px;right:22px}
-.lb .lb-prev{left:14px;top:50%;transform:translateY(-50%)}
-.lb .lb-next{right:14px;top:50%;transform:translateY(-50%)}
-@media(max-width:560px){.lb .lb-prev{left:2px}.lb .lb-next{right:2px}}
+.lb .lb-close{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--bone);cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:14px}
+.lb .lb-close:hover{color:var(--gold)}
+@media(max-width:700px){.lb .lb-main{max-width:82vw}.lb .lb-side{max-width:8vw}}
 
 footer{padding:36px 0 52px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--bone-dim)}
@@ -340,9 +341,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 
 <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer">
   <button class="lb-close" id="lbClose" aria-label="Close">Close &times;</button>
-  <button class="lb-prev" id="lbPrev" aria-label="Previous">&larr;</button>
-  <button class="lb-next" id="lbNext" aria-label="Next">&rarr;</button>
-  <img id="lbImg" src="" alt="">
+  <div class="lb-strip">
+    <img class="lb-side" id="lbPrevImg" src="" alt="" title="Previous">
+    <img class="lb-main" id="lbImg" src="" alt="">
+    <img class="lb-side" id="lbNextImg" src="" alt="" title="Next">
+  </div>
   <div class="lb-cap" id="lbCap"></div>
 </div>
 <script>
@@ -379,11 +382,15 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 (function(){
   var works=[].slice.call(document.querySelectorAll('.work')).filter(function(w){return w.querySelector('.ph img')});
   var lb=document.getElementById('lightbox'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  var prevImg=document.getElementById('lbPrevImg'),nextImg=document.getElementById('lbNextImg');
   var idx=0;
+  function src(i){return works[(i+works.length)%works.length].querySelector('.ph img')}
   function show(i){
     idx=(i+works.length)%works.length;
-    var w=works[idx],ph=w.querySelector('.ph img');
-    img.src=ph.src;img.alt=ph.alt;
+    var cur=src(idx),p=src(idx-1),n=src(idx+1);
+    img.src=cur.src;img.alt=cur.alt;
+    prevImg.src=p.src;prevImg.alt='';nextImg.src=n.src;nextImg.alt='';
+    var w=works[idx];
     cap.textContent=w.querySelector('h3').textContent+' \u00b7 '+w.querySelector('.dim').textContent;
     lb.classList.add('open');document.body.style.overflow='hidden';
   }
@@ -392,8 +399,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
     w.addEventListener('click',function(e){e.preventDefault();show(i)});
   });
   document.getElementById('lbClose').addEventListener('click',close);
-  document.getElementById('lbPrev').addEventListener('click',function(){show(idx-1)});
-  document.getElementById('lbNext').addEventListener('click',function(){show(idx+1)});
+  prevImg.addEventListener('click',function(){show(idx-1)});
+  nextImg.addEventListener('click',function(){show(idx+1)});
   lb.addEventListener('click',function(e){if(e.target===lb)close()});
   document.addEventListener('keydown',function(e){
     if(!lb.classList.contains('open'))return;
