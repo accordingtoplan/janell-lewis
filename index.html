@@ -56,6 +56,24 @@ nav ul a:hover{color:var(--gold)}
 .theme-toggle:hover{transform:rotate(180deg)}
 .theme-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
+/* mobile menu */
+.burger{display:none;background:none;border:none;cursor:pointer;padding:10px;flex-direction:column;gap:5px}
+.burger span{display:block;width:22px;height:1.5px;background:var(--bone);transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:60;background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,8vw,48px);opacity:0;pointer-events:none;transition:opacity .35s}
+.mnav.open{opacity:1;pointer-events:auto}
+.mnav a{font-family:'Gloock',serif;font-size:clamp(34px,10vw,52px);line-height:1.35;color:var(--bone);opacity:0;transform:translateY(16px);transition:opacity .4s,transform .4s,color .25s}
+.mnav.open a{opacity:1;transform:none}
+.mnav.open a:nth-child(1){transition-delay:.05s}
+.mnav.open a:nth-child(2){transition-delay:.1s}
+.mnav.open a:nth-child(3){transition-delay:.15s}
+.mnav.open a:nth-child(4){transition-delay:.2s}
+.mnav.open a:nth-child(5){transition-delay:.25s}
+.mnav a:hover{color:var(--gold)}
+.mnav .mnav-foot{position:absolute;bottom:32px;left:clamp(24px,8vw,48px);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim)}
+
 /* hero */
 
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:calc(100vh - 68px)}
@@ -157,8 +175,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   .exh .ve{grid-column:2;text-align:left}
   nav .wrap{gap:10px}
   nav .brand{font-size:17px;white-space:nowrap}
-  nav ul{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1;justify-content:flex-end}
-  nav ul::-webkit-scrollbar{display:none}
+  nav ul{display:none}
+  .burger{display:flex;z-index:70;position:relative}
   h1{font-size:clamp(46px,13vw,64px)}
   .hero-img{min-height:52vh}
   .hero-text{padding-top:36px;padding-bottom:48px}
@@ -183,8 +201,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
       <li><a href="#contact">Contact</a></li>
       <li><button class="theme-toggle" id="themeToggle" aria-label="Switch color theme" title="Switch theme"></button></li>
     </ul>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="mnav" id="mnav">
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#exhibitions">Exhibitions</a>
+  <a href="#press">Press</a>
+  <a href="#contact">Contact</a>
+  <div class="mnav-foot">Janell Lewis &middot; Ceramic Sculptor</div>
+</div>
 
 <header id="top">
   <div class="hero">
@@ -361,6 +388,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   </div>
   <div class="lb-cap" id="lbCap"></div>
 </div>
+<script>
+(function(){
+  var burger=document.getElementById('burger'),mnav=document.getElementById('mnav');
+  function toggle(force){
+    var open=typeof force==='boolean'?force:!mnav.classList.contains('open');
+    mnav.classList.toggle('open',open);burger.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  }
+  burger.addEventListener('click',function(){toggle()});
+  [].slice.call(mnav.querySelectorAll('a')).forEach(function(a){a.addEventListener('click',function(){toggle(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mnav.classList.contains('open'))toggle(false)});
+})();
+</script>
 <script>
 (function(){
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
