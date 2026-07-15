@@ -111,6 +111,18 @@ h2{font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);l
 .contact .row a{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--bone);padding-bottom:5px;transition:color .25s,border-color .25s}
 .contact .row a:hover{color:var(--gold);border-color:var(--gold)}
 
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--black) 92%,black);display:none;align-items:center;justify-content:center;flex-direction:column}
+.lb.open{display:flex}
+.lb img{max-width:min(92vw,1600px);max-height:82vh;object-fit:contain;box-shadow:0 24px 80px rgba(0,0,0,.4)}
+.lb .lb-cap{margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone)}
+.lb button{position:absolute;background:none;border:none;color:var(--bone);cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:14px}
+.lb button:hover{color:var(--gold)}
+.lb .lb-close{top:18px;right:22px}
+.lb .lb-prev{left:14px;top:50%;transform:translateY(-50%)}
+.lb .lb-next{right:14px;top:50%;transform:translateY(-50%)}
+@media(max-width:560px){.lb .lb-prev{left:2px}.lb .lb-next{right:2px}}
+
 footer{padding:36px 0 52px}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--bone-dim)}
 
@@ -310,6 +322,41 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   </div>
 </footer>
 
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">Close &times;</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous">&larr;</button>
+  <button class="lb-next" id="lbNext" aria-label="Next">&rarr;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+<script>
+(function(){
+  var works=[].slice.call(document.querySelectorAll('.work')).filter(function(w){return w.querySelector('.ph img')});
+  var lb=document.getElementById('lightbox'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  var idx=0;
+  function show(i){
+    idx=(i+works.length)%works.length;
+    var w=works[idx],ph=w.querySelector('.ph img');
+    img.src=ph.src;img.alt=ph.alt;
+    cap.textContent=w.querySelector('h3').textContent+' \u00b7 '+w.querySelector('.dim').textContent;
+    lb.classList.add('open');document.body.style.overflow='hidden';
+  }
+  function close(){lb.classList.remove('open');document.body.style.overflow=''}
+  works.forEach(function(w,i){
+    w.addEventListener('click',function(e){e.preventDefault();show(i)});
+  });
+  document.getElementById('lbClose').addEventListener('click',close);
+  document.getElementById('lbPrev').addEventListener('click',function(){show(idx-1)});
+  document.getElementById('lbNext').addEventListener('click',function(){show(idx+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowLeft')show(idx-1);
+    if(e.key==='ArrowRight')show(idx+1);
+  });
+})();
+</script>
 <script>
 (function(){
   var root=document.documentElement,btn=document.getElementById('themeToggle');
