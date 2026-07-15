@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Janell Lewis — Ceramic Sculptor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --greenware:#ECEAE6;      /* unfired clay */
+  --greenware-2:#E0DDD6;
+  --slip:#CFCBC2;
+  --ink:#1E1C1A;
+  --ink-soft:#5A554E;
+  --oxide:#7A3B2E;          /* iron oxide — used sparingly */
+  --hairline:rgba(30,28,26,.18);
+  --max:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--greenware);color:var(--ink);font-family:'Archivo',sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--oxide);outline-offset:3px}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--greenware) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--hairline)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+nav .brand{font-family:'Gloock',serif;font-size:20px;letter-spacing:.01em}
+nav ul{display:flex;gap:clamp(16px,3vw,36px);list-style:none}
+nav ul a{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+nav ul a:hover{color:var(--oxide)}
+
+/* hero */
+header{border-bottom:1px solid var(--hairline)}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-height:calc(100vh - 64px)}
+.hero-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,6vw,88px) clamp(20px,4vw,56px);position:relative}
+.hero-text .eyebrow{color:var(--oxide);margin-bottom:28px}
+h1{font-family:'Gloock',serif;font-weight:400;font-size:clamp(56px,8.5vw,124px);line-height:.94;letter-spacing:-.01em}
+.hero-text p.lede{margin-top:32px;max-width:44ch;font-size:clamp(17px,1.4vw,20px);color:var(--ink-soft)}
+.hero-img{position:relative;overflow:hidden;background:var(--greenware-2)}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85)}
+/* the scale rule — signature element */
+.scale-rule{position:absolute;left:0;top:0;bottom:0;width:56px;border-right:1px solid var(--hairline);display:flex;flex-direction:column;justify-content:space-between;padding:16px 0;background:color-mix(in srgb,var(--greenware) 55%,transparent)}
+.scale-rule span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink);writing-mode:vertical-rl;transform:rotate(180deg);margin:0 auto;letter-spacing:.12em}
+.scale-rule i{display:block;width:14px;height:1px;background:var(--ink);margin:0 auto}
+.hero-img figcaption{position:absolute;left:72px;bottom:16px;color:#fff;mix-blend-mode:difference;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+
+/* sections */
+section{padding:clamp(72px,9vw,128px) 0;border-bottom:1px solid var(--hairline)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:clamp(36px,5vw,64px)}
+h2{font-family:'Gloock',serif;font-weight:400;font-size:clamp(34px,4vw,54px);letter-spacing:-.01em}
+.sec-head .mono{color:var(--ink-soft)}
+
+/* work grid */
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+.work{display:block}
+.work .ph{aspect-ratio:4/5;background:var(--greenware-2);border:1px solid var(--hairline);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.work .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.work:hover .ph img{transform:scale(1.03)}
+.work .ph .tbd{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.work .meta{margin-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.work .meta h3{font-family:'Gloock',serif;font-weight:400;font-size:22px}
+.work .meta .dim{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--oxide);white-space:nowrap}
+.work .desc{font-size:14px;color:var(--ink-soft);margin-top:4px}
+/* height bar under each work — scale motif carried through */
+.hbar{margin-top:10px;height:1px;background:var(--hairline);position:relative}
+.hbar::after{content:"";position:absolute;left:0;top:0;height:1px;background:var(--oxide);width:var(--h,50%)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,6vw,88px);align-items:start}
+.about .facts{border-top:1px solid var(--ink);padding-top:20px}
+.about .facts dl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px}
+.about .facts dt{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding-top:4px}
+.about .facts dd{font-size:15px}
+.about .bio p{margin-bottom:1.2em;font-size:clamp(17px,1.35vw,19px)}
+.about .bio p:first-child::first-letter{font-family:'Gloock',serif;font-size:3.2em;float:left;line-height:.85;padding-right:10px;color:var(--oxide)}
+
+/* exhibitions */
+.exh{list-style:none}
+.exh li{display:grid;grid-template-columns:88px 1fr auto;gap:20px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--hairline)}
+.exh li:last-child{border-bottom:none}
+.exh .yr{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--oxide)}
+.exh .ti{font-family:'Gloock',serif;font-size:clamp(19px,2vw,24px)}
+.exh .ve{font-size:14px;color:var(--ink-soft);text-align:right}
+
+/* contact */
+.contact{text-align:left}
+.contact h2{max-width:16ch}
+.contact .row{margin-top:40px;display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,64px)}
+.contact .row a{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:4px}
+.contact .row a:hover{color:var(--oxide);border-color:var(--oxide)}
+
+footer{padding:32px 0 48px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--ink-soft)}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .hero-img{min-height:60vh;order:-1}
+  .work-grid{grid-template-columns:1fr 1fr}
+  .about{grid-template-columns:1fr}
+  nav ul{gap:14px}
+}
+@media(max-width:560px){
+  .work-grid{grid-template-columns:1fr}
+  .exh li{grid-template-columns:64px 1fr}
+  .exh .ve{grid-column:2;text-align:left}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Janell Lewis</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#exhibitions">Exhibitions</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="eyebrow mono">Ceramic Sculptor — Claremont, California</p>
+      <h1>Figures,<br>built at<br>life size.</h1>
+      <p class="lede">Hand-built clay sculpture at monumental scale — human figures and animal forms shaped slowly in Studio 15 at the AMOCA Ceramics Studio, Pomona.</p>
+    </div>
+    <figure class="hero-img">
+      <img src="img/studio.jpg" alt="Janell Lewis working on a life-size clay figure in her studio, with a large bird sculpture nearby">
+      <div class="scale-rule" aria-hidden="true">
+        <i></i><span>7 ft</span><i></i><span>6 ft</span><i></i><span>5 ft</span><i></i><span>4 ft</span><i></i><span>3 ft</span><i></i><span>2 ft</span><i></i><span>1 ft</span><i></i>
+      </div>
+      <figcaption>Studio 15 · AMOCA Ceramics Studio · Pomona, CA</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected Work</h2>
+      <span class="mono">Hand-built clay · 2016 —</span>
+    </div>
+    <div class="work-grid">
+      <a class="work" href="#">
+        <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
+        <div class="meta"><h3>Rabbit</h3><span class="dim">outdoor · ceramic</span></div>
+        <p class="desc">Exhibited among the native plantings of California Botanic Garden — where wild birds famously nested in its ears.</p>
+        <div class="hbar" style="--h:62%"></div>
+      </a>
+      <a class="work" href="#">
+        <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
+        <div class="meta"><h3>Rosie</h3><span class="dim">outdoor · ceramic</span></div>
+        <p class="desc">Figurative sculpture shown in <em>Clayfornia</em>, California Botanic Garden, Claremont.</p>
+        <div class="hbar" style="--h:74%"></div>
+      </a>
+      <a class="work" href="#">
+        <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
+        <div class="meta"><h3>Standing Figure</h3><span class="dim">h. ~7 ft · clay</span></div>
+        <p class="desc">Life-size suited figure, hand-built in sections — down to the laces on his shoes.</p>
+        <div class="hbar" style="--h:96%"></div>
+      </a>
+      <a class="work" href="#">
+        <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
+        <div class="meta"><h3>Ostrich</h3><span class="dim">h. ~6 ft · clay</span></div>
+        <p class="desc">Large-scale bird form with carved feather texture, built on a rolling armature.</p>
+        <div class="hbar" style="--h:84%"></div>
+      </a>
+      <a class="work" href="#">
+        <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
+        <div class="meta"><h3>Untitled</h3><span class="dim">— · —</span></div>
+        <p class="desc">Placeholder — title, year, dimensions, and materials to be supplied.</p>
+        <div class="hbar" style="--h:40%"></div>
+      </a>
+      <a class="work" href="#">
+        <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
+        <div class="meta"><h3>Untitled</h3><span class="dim">— · —</span></div>
+        <p class="desc">Placeholder — title, year, dimensions, and materials to be supplied.</p>
+        <div class="hbar" style="--h:55%"></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="facts">
+      <dl>
+        <dt>Based in</dt><dd>Claremont, California</dd>
+        <dt>Studio</dt><dd>Studio 15, AMOCA Ceramics Studio, Pomona — resident artist since 2016</dd>
+        <dt>Medium</dt><dd>Hand-built clay; figurative &amp; animal forms at large scale</dd>
+        <dt>Community</dt><dd>Longtime supporter of the arts across the Pomona Valley and Inland Empire</dd>
+      </dl>
+    </div>
+    <div class="bio">
+      <p>Janell Lewis builds in clay at the scale of life. A longtime resident artist at the AMOCA Ceramics Studio — the working-studio arm of the American Museum of Ceramic Art in Pomona — she is known for continually challenging herself toward larger and more ambitious sculpture: standing human figures, oversized animals, forms that meet the viewer eye to eye.</p>
+      <p>Her work carries a close attention to the ordinary detail — the fold of a jacket pocket, the lacing of a shoe, the curve of a rabbit's ear — rendered with warmth and a quiet sense of humor. Shown outdoors among California native plants in the <em>Clayfornia</em> exhibition at California Botanic Garden, her sculptures became part of the landscape itself; one was even adopted by nesting birds.</p>
+      <p class="mono" style="color:var(--ink-soft)">[ Artist statement to be supplied — placeholder copy ]</p>
+    </div>
+  </div>
+</section>
+
+<section id="exhibitions">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Exhibitions</h2>
+      <span class="mono">Selected</span>
+    </div>
+    <ul class="exh">
+      <li>
+        <span class="yr">2020–21</span>
+        <span class="ti">Clayfornia: Ceramic Sculpture in the California Sunshine</span>
+        <span class="ve">California Botanic Garden, Claremont, CA</span>
+      </li>
+      <li>
+        <span class="yr">2018</span>
+        <span class="ti">Studio Exhibition — Janell Lewis &amp; Gary Lett</span>
+        <span class="ve">AMOCA Ceramics Studio, Pomona, CA</span>
+      </li>
+      <li>
+        <span class="yr">—</span>
+        <span class="ti mono" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft)">Additional exhibitions to be supplied</span>
+        <span class="ve"></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none">
+  <div class="wrap contact">
+    <p class="eyebrow mono" style="color:var(--oxide);margin-bottom:24px">Inquiries</p>
+    <h2>For studio visits, exhibitions, and commissions.</h2>
+    <div class="row">
+      <a href="mailto:hello@example.com">Email — placeholder</a>
+      <a href="https://www.instagram.com/studioamoca/" rel="noopener">@studioamoca</a>
+      <a href="https://www.amoca.org/studio1/" rel="noopener">AMOCA Ceramics Studio</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap mono">
+    <span>© 2026 Janell Lewis</span>
+    <span>Claremont · Pomona, California</span>
+  </div>
+</footer>
+
+</body>
+</html>
