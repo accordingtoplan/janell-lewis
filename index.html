@@ -8,18 +8,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#382D22;          /* warm clay */
-  --black-2:#453729;
-  --bone:#F0EAE1;           /* fired bone white */
-  --bone-dim:#BDB4A7;
-  --gold:#B78B4E;           /* bronze glaze accent */
-  --hairline:rgba(240,234,225,.14);
+  --black:#C9B9A4;          /* hardened clay, light */
+  --black-2:#BCAA92;
+  --bone:#161310;           /* near-black text */
+  --bone-dim:#4E463C;
+  --gold:#8A5A28;           /* deeper bronze for light ground */
+  --hairline:rgba(22,19,16,.18);
   --max:1280px;
+}
+[data-theme="dark"]{
+  --black:#382D22;
+  --black-2:#453729;
+  --bone:#F0EAE1;
+  --bone-dim:#BDB4A7;
+  --gold:#B78B4E;
+  --hairline:rgba(240,234,225,.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{background:var(--black);color:var(--bone);font-family:'Archivo',sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{transition:background .35s,color .35s;background:var(--black);color:var(--bone);font-family:'Archivo',sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 ::selection{background:var(--gold);color:var(--black)}
@@ -34,6 +42,9 @@ nav .brand{font-family:'Gloock',serif;font-size:20px}
 nav ul{display:flex;gap:clamp(16px,3vw,40px);list-style:none}
 nav ul a{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim);transition:color .25s}
 nav ul a:hover{color:var(--gold)}
+.theme-toggle{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--bone);background:linear-gradient(135deg,var(--bone) 50%,transparent 50%);cursor:pointer;padding:0;margin-left:6px;transition:transform .35s}
+.theme-toggle:hover{transform:rotate(180deg)}
+.theme-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* hero */
 header{border-bottom:1px solid var(--hairline)}
@@ -44,7 +55,7 @@ h1{font-family:'Gloock',serif;font-weight:400;font-size:clamp(58px,8.5vw,128px);
 .hero-text p.lede{margin-top:36px;max-width:42ch;font-size:clamp(17px,1.4vw,20px);color:var(--bone-dim)}
 .hero-img{position:relative;overflow:hidden;background:var(--black-2)}
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:.94}
-.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(56,45,34,.55),transparent 40%)}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,color-mix(in srgb,var(--black) 55%,transparent),transparent 40%)}
 .hero-img figcaption{position:absolute;left:18px;bottom:18px;z-index:2;color:var(--bone);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 
 
@@ -120,6 +131,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
       <li><a href="#exhibitions">Exhibitions</a></li>
       <li><a href="#press">Press</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><button class="theme-toggle" id="themeToggle" aria-label="Switch color theme" title="Switch theme"></button></li>
     </ul>
   </div>
 </nav>
@@ -281,5 +293,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   </div>
 </footer>
 
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('themeToggle');
+  var saved=null;try{saved=localStorage.getItem('jl-theme')}catch(e){}
+  if(saved==='dark')root.setAttribute('data-theme','dark');
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark';
+    if(dark)root.removeAttribute('data-theme');else root.setAttribute('data-theme','dark');
+    try{localStorage.setItem('jl-theme',dark?'light':'dark')}catch(e){}
+  });
+})();
+</script>
 </body>
 </html>
