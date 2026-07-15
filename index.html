@@ -47,7 +47,7 @@ nav ul a:hover{color:var(--gold)}
 .theme-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* hero */
-header{border-bottom:1px solid var(--hairline)}
+
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:calc(100vh - 68px)}
 .hero-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,96px) clamp(20px,4vw,60px)}
 .hero-text .eyebrow{color:var(--gold);margin-bottom:32px}
@@ -60,7 +60,7 @@ h1{font-family:'Gloock',serif;font-weight:400;font-size:clamp(58px,8.5vw,128px);
 
 
 /* sections */
-section{padding:clamp(80px,10vw,140px) 0;border-bottom:1px solid var(--hairline)}
+section{padding:clamp(80px,10vw,140px) 0}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:clamp(40px,5vw,72px)}
 h2{font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);letter-spacing:-.01em}
 .sec-head .mono{color:var(--bone-dim)}
@@ -76,12 +76,10 @@ h2{font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);l
 .work .meta h3{font-family:'Gloock',serif;font-weight:400;font-size:24px}
 .work .meta .dim{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);white-space:nowrap;letter-spacing:.08em}
 .work .desc{font-size:14px;color:var(--bone-dim);margin-top:6px}
-.hbar{margin-top:12px;height:1px;background:var(--hairline);position:relative}
-.hbar::after{content:"";position:absolute;left:0;top:0;height:1px;background:var(--gold);width:var(--h,50%)}
 
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(36px,6vw,96px);align-items:start}
-.about .facts{border-top:1px solid var(--gold);padding-top:24px}
+.about .facts{padding-top:4px}
 .about .facts dl{display:grid;grid-template-columns:auto 1fr;gap:12px 26px}
 .about .facts dt{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);padding-top:4px}
 .about .facts dd{font-size:15px}
@@ -91,8 +89,7 @@ h2{font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);l
 
 /* exhibitions */
 .exh{list-style:none}
-.exh li{display:grid;grid-template-columns:96px 1fr auto;gap:22px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--hairline)}
-.exh li:last-child{border-bottom:none}
+.exh li{display:grid;grid-template-columns:96px 1fr auto;gap:22px;align-items:baseline;padding:18px 0}
 .exh .yr{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)}
 .exh .ti{font-family:'Gloock',serif;font-size:clamp(20px,2vw,26px)}
 .exh .ve{font-size:14px;color:var(--bone-dim);text-align:right;max-width:34ch}
@@ -164,37 +161,31 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
         <div class="ph"><img src="img/dancer.jpg" alt="Life-size ceramic sculpture of a muscular figure in a tulle skirt, arms crossed, installed in a garden"></div>
         <div class="meta"><h3>Dancer</h3><span class="dim">life-size &middot; glazed ceramic</span></div>
         <p class="desc">A powerfully built figure in a tutu, arms folded. Strength and softness held in the same body. Garden installation.</p>
-        <div class="hbar" style="--h:78%"></div>
       </a>
       <a class="work" href="#">
         <div class="ph"><img src="img/wolf.jpg" alt="Seated ceramic wolf figure in a white tank top holding a rose, with a lizard on its knee"></div>
         <div class="meta"><h3>Wolf</h3><span class="dim">seated &middot; glazed ceramic</span></div>
         <p class="desc">A wolf at rest in a tank top and sneakers, rose in hand, lizard on knee. Folklore recast in the everyday.</p>
-        <div class="hbar" style="--h:52%"></div>
       </a>
       <a class="work" href="#">
         <div class="ph"><img src="img/barefoot.jpg" alt="Monumental ceramic figure with crossed arms, blue trousers and one colossal bare foot on a plinth"></div>
         <div class="meta"><h3>Colossus</h3><span class="dim">h. ~8 ft &middot; glazed ceramic</span></div>
         <p class="desc">A towering figure resolving into a single monumental bare foot. Her largest scale work to date.</p>
-        <div class="hbar" style="--h:100%"></div>
       </a>
       <a class="work" href="#">
         <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
         <div class="meta"><h3>Rabbit</h3><span class="dim">outdoor &middot; ceramic</span></div>
         <p class="desc">Shown in <em>Clayfornia</em> at California Botanic Garden, where wild birds famously nested in its ears.</p>
-        <div class="hbar" style="--h:62%"></div>
       </a>
       <a class="work" href="#">
         <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
         <div class="meta"><h3>Rosie</h3><span class="dim">outdoor &middot; ceramic</span></div>
         <p class="desc">Figurative sculpture shown in <em>Clayfornia</em>, California Botanic Garden, Claremont.</p>
-        <div class="hbar" style="--h:74%"></div>
       </a>
       <a class="work" href="#">
         <div class="ph"><span class="tbd">Photograph forthcoming</span></div>
         <div class="meta"><h3>Stonehenge Birds</h3><span class="dim">outdoor &middot; ceramic</span></div>
         <p class="desc">Bird forms arranged in monumental formation, shown in <em>Clayfornia</em> at California Botanic Garden.</p>
-        <div class="hbar" style="--h:58%"></div>
       </a>
     </div>
   </div>
