@@ -5,188 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#C9B9A4">
 <title>Janell Lewis. Ceramic Sculptor.</title>
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="img/favicon-512.png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="description" content="Hand-built clay sculpture at monumental scale by Janell Lewis, resident artist at the AMOCA Ceramics Studio in Pomona, California.">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/img/favicon-512.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --black:#C9B9A4;          /* hardened clay, light */
-  --black-2:#BCAA92;
-  --bone:#161310;           /* near-black text */
-  --bone-dim:#4E463C;
-  --gold:#8A5A28;           /* deeper bronze for light ground */
-  --hairline:rgba(22,19,16,.18);
-  --surface-a:#C9B9A4;      /* base */
-  --surface-b:#BFAE96;      /* one shade deeper */
-  --surface-c:#B5A288;      /* two deeper */
-  --max:1280px;
-}
-[data-theme="dark"]{
-  --black:#382D22;
-  --black-2:#453729;
-  --bone:#F0EAE1;
-  --bone-dim:#BDB4A7;
-  --gold:#B78B4E;
-  --hairline:rgba(240,234,225,.14);
-  --surface-a:#382D22;
-  --surface-b:#3F3326;
-  --surface-c:#463A2B;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{transition:background .35s,color .35s;background:var(--black);color:var(--bone);font-family:'Archivo',sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-::selection{background:var(--gold);color:var(--black)}
-.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,4vw,60px)}
-img{filter:saturate(.9) contrast(1.02)}
-
-/* nav */
-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--black) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--hairline)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-nav .brand{font-family:'Gloock',serif;font-size:20px}
-nav ul{display:flex;gap:clamp(16px,3vw,40px);list-style:none}
-nav ul a{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim);transition:color .25s;padding:12px 2px;display:inline-block}
-nav ul a:hover{color:var(--gold)}
-.theme-toggle{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--bone);background:linear-gradient(135deg,var(--bone) 50%,transparent 50%);cursor:pointer;padding:0;margin-left:6px;transition:transform .35s}
-.theme-toggle:hover{transform:rotate(180deg)}
-.theme-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-
-/* mobile menu */
-.burger{display:none;background:none;border:none;cursor:pointer;padding:10px;flex-direction:column;gap:5px}
-.burger span{display:block;width:22px;height:1.5px;background:var(--bone);transition:transform .3s,opacity .3s}
-.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mnav{position:fixed;inset:0;z-index:60;background:var(--black);display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,8vw,48px);opacity:0;pointer-events:none;transition:opacity .35s}
-.mnav.open{opacity:1;pointer-events:auto}
-.mnav a{font-family:'Gloock',serif;font-size:clamp(34px,10vw,52px);line-height:1.35;color:var(--bone);opacity:0;transform:translateY(16px);transition:opacity .4s,transform .4s,color .25s}
-.mnav.open a{opacity:1;transform:none}
-.mnav.open a:nth-child(1){transition-delay:.05s}
-.mnav.open a:nth-child(2){transition-delay:.1s}
-.mnav.open a:nth-child(3){transition-delay:.15s}
-.mnav.open a:nth-child(4){transition-delay:.2s}
-.mnav.open a:nth-child(5){transition-delay:.25s}
-.mnav a:hover{color:var(--gold)}
-.mnav .mnav-foot{position:absolute;bottom:32px;left:clamp(24px,8vw,48px);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim)}
-
-/* hero */
-
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:calc(100vh - 68px)}
-.hero-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,96px) clamp(20px,4vw,60px)}
-.hero-text .eyebrow{color:var(--gold);margin-bottom:32px}
-h1{font-family:'Gloock',serif;font-weight:400;font-size:clamp(58px,8.5vw,128px);line-height:.94;letter-spacing:-.01em}
-.hero-text p.lede{margin-top:36px;max-width:42ch;font-size:clamp(17px,1.4vw,20px);color:var(--bone-dim)}
-.hero-img{position:relative;overflow:hidden;background:var(--black-2)}
-.hero-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:.94}
-.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,color-mix(in srgb,var(--black) 55%,transparent),transparent 40%)}
-.hero-img figcaption{position:absolute;left:18px;bottom:18px;z-index:2;color:var(--bone);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-
-
-/* sections */
-section{padding:clamp(80px,10vw,140px) 0;transition:background .35s}
-#work,#exhibitions{background:var(--surface-b)}
-#press{background:var(--surface-c)}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:clamp(40px,5vw,72px)}
-h2{font-family:'Gloock',serif;font-weight:400;font-size:clamp(36px,4.5vw,60px);letter-spacing:-.01em}
-.sec-head .mono{color:var(--bone-dim)}
-
-/* work grid */
-.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,44px)}
-.work{display:block}
-.work .ph{aspect-ratio:4/5;background:var(--black-2);border:1px solid var(--hairline);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.work .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.6,.2,1),opacity .6s}
-.work:hover .ph img{transform:scale(1.035)}
-.work .ph .tbd{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-dim)}
-.work .meta{margin-top:18px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.work .meta h3{font-family:'Gloock',serif;font-weight:400;font-size:24px}
-.work .meta .dim{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);white-space:nowrap;letter-spacing:.08em}
-.work .desc{font-size:14px;color:var(--bone-dim);margin-top:6px}
-
-/* about */
-.about{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(36px,6vw,96px);align-items:start}
-.about .facts{padding-top:4px}
-.about .facts dl{display:grid;grid-template-columns:auto 1fr;gap:12px 26px}
-.about .facts dt{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);padding-top:4px}
-.about .facts dd{font-size:15px}
-.about .bio p{margin-bottom:1.25em;font-size:clamp(17px,1.35vw,19px);color:var(--bone)}
-.about .bio p:first-child::first-letter{font-family:'Gloock',serif;font-size:3.3em;float:left;line-height:.85;padding-right:12px;color:var(--gold)}
-.about .bio .note{color:var(--bone-dim)}
-
-/* exhibitions */
-.exh{list-style:none}
-.exh li{display:grid;grid-template-columns:96px 1fr auto;gap:22px;align-items:baseline;padding:18px 0}
-.exh .yr{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)}
-.exh .ti{font-family:'Gloock',serif;font-size:clamp(20px,2vw,26px)}
-.exh .ve{font-size:14px;color:var(--bone-dim);text-align:right;max-width:34ch}
-
-/* contact */
-.contact h2{max-width:18ch}
-.contact .row{margin-top:44px;display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,64px)}
-.contact .row a{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--bone);padding-bottom:5px;transition:color .25s,border-color .25s}
-.contact .row a:hover{color:var(--gold);border-color:var(--gold)}
-
-/* scroll animations */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.work.reveal{transition-delay:var(--d,0s)}
-.hero-img img{will-change:transform;transform:translateY(var(--py,0)) scale(1.08)}
-.hero-text>*{opacity:0;transform:translateY(24px);animation:heroIn .9s cubic-bezier(.2,.6,.2,1) forwards}
-.hero-text .eyebrow{animation-delay:.05s}
-.hero-text h1{animation-delay:.15s}
-.hero-text p.lede{animation-delay:.3s}
-@keyframes heroIn{to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  .hero-text>*{opacity:1;transform:none;animation:none}
-  .hero-img img{transform:none}
-}
-
-/* lightbox */
-.lb{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--black) 94%,black);display:none;align-items:center;justify-content:center;flex-direction:column;overflow:hidden}
-.lb.open{display:flex}
-.lb .lb-strip{display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,48px);width:100vw}
-.lb .lb-strip img{object-fit:contain;transition:opacity .35s,transform .35s}
-.lb .lb-main{max-width:min(72vw,1400px);max-height:80vh}
-.lb .lb-side{max-height:62vh;max-width:16vw;opacity:.35;cursor:pointer;flex:0 0 auto}
-.lb .lb-side:hover{opacity:.6}
-.lb .lb-cap{margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone)}
-.lb .lb-close{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--bone);cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:14px}
-.lb .lb-close:hover{color:var(--gold)}
-@media(max-width:700px){.lb .lb-main{max-width:82vw}.lb .lb-side{max-width:8vw}}
-
-footer{padding:36px 0 52px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--bone-dim)}
-
-@media(max-width:880px){
-  .hero{grid-template-columns:1fr}
-  .hero-img{min-height:62vh;order:-1}
-  .work-grid{grid-template-columns:1fr 1fr}
-  .about{grid-template-columns:1fr}
-  nav ul{gap:14px}
-}
-@media(max-width:560px){
-  .work-grid{grid-template-columns:1fr}
-  .exh li{grid-template-columns:70px 1fr}
-  .exh .ve{grid-column:2;text-align:left}
-  nav .wrap{gap:10px}
-  nav .brand{font-size:17px;white-space:nowrap}
-  nav ul{display:none}
-  .burger{display:flex;z-index:70;position:relative}
-  h1{font-size:clamp(46px,13vw,64px)}
-  .hero-img{min-height:52vh}
-  .hero-text{padding-top:36px;padding-bottom:48px}
-  section{padding:64px 0}
-  .work .meta h3{font-size:21px}
-  .lb .lb-cap{padding:0 16px;text-align:center}
-  .contact .row{gap:20px}
-  .contact .row a{padding:8px 0}
-}
-</style>
+<link rel="stylesheet" href="/css/site.css">
+<script>try{if(localStorage.getItem('jl-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 </head>
 <body>
 
@@ -194,7 +20,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   <div class="wrap">
     <a class="brand" href="#top">Janell Lewis</a>
     <ul>
-      <li><a href="#work">Work</a></li>
+      <li><a href="/work.html">Work</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#exhibitions">Exhibitions</a></li>
       <li><a href="#press">Press</a></li>
@@ -205,7 +31,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   </div>
 </nav>
 <div class="mnav" id="mnav">
-  <a href="#work">Work</a>
+  <a href="/work.html">Work</a>
   <a href="#about">About</a>
   <a href="#exhibitions">Exhibitions</a>
   <a href="#press">Press</a>
@@ -221,7 +47,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
       <p class="lede">Hand-built clay sculpture at monumental scale. Human figures and animal forms, shaped slowly in Studio 15 at the AMOCA Ceramics Studio in Pomona.</p>
     </div>
     <figure class="hero-img">
-      <img src="img/studio.jpg" alt="Janell Lewis working on a life-size clay figure in her studio, with a large bird sculpture nearby">
+      <img src="/img/studio.jpg" alt="Janell Lewis working on a life-size clay figure in her studio, with a large bird sculpture nearby">
       <figcaption>Studio 15 &middot; AMOCA Ceramics Studio &middot; Pomona</figcaption>
     </figure>
   </div>
@@ -237,96 +63,55 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
       <span class="mono">Hand-built clay &middot; 2016 to today</span>
     </div>
     <div class="work-grid">
-      <a class="work" href="#">
-        <div class="ph"><img src="img/dancer.jpg" alt="Life-size ceramic figure in a tutu with arms folded, standing in evening light beside a garden bench"></div>
-        <div class="meta"><h3>Dancer</h3><span class="dim">life-size &middot; glazed ceramic</span></div>
-        <p class="desc">A powerfully built figure in a tutu, arms folded. Strength and softness held in the same body. Garden installation.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/wolf.jpg" alt="Seated ceramic wolf figure in a white tank top holding a rose, with a lizard on its knee"></div>
-        <div class="meta"><h3>Wolf</h3><span class="dim">seated &middot; glazed ceramic</span></div>
-        <p class="desc">A wolf at rest in a tank top and sneakers, rose in hand, lizard on knee. Folklore recast in the everyday.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/barefoot.jpg" alt="Monumental ceramic figure with crossed arms, blue trousers and one colossal bare foot on a plinth"></div>
+      <a class="work" href="/work.html">
+        <div class="ph"><img src="/img/barefoot.jpg" alt="Monumental ceramic figure with crossed arms, blue trousers and one colossal bare foot on a plinth"></div>
         <div class="meta"><h3>Colossus</h3><span class="dim">h. ~8 ft &middot; glazed ceramic</span></div>
         <p class="desc">A towering figure resolving into a single monumental bare foot. Her largest scale work to date.</p>
       </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/rabbit.jpg" alt="Seated ceramic rabbit figure with long ears resting on a dry hillside in low evening light"></div>
+      <a class="work" href="/work.html" data-frames="/img/dancer.jpg|/img/dancer-2.jpg">
+        <div class="ph"><img src="/img/dancer.jpg" alt="Life-size ceramic figure in a tutu with arms folded, standing in evening light beside a garden bench"><span class="count">2 frames</span></div>
+        <div class="meta"><h3>Dancer</h3><span class="dim">life-size &middot; glazed ceramic</span></div>
+        <p class="desc">A powerfully built figure in a tutu, arms folded. Strength and softness held in the same body. Garden installation.</p>
+      </a>
+      <a class="work" href="/work.html">
+        <div class="ph"><img src="/img/rabbit.jpg" alt="Seated ceramic rabbit figure with long ears resting on a dry hillside in low evening light"></div>
         <div class="meta"><h3>Rabbit</h3><span class="dim">outdoor &middot; ceramic</span></div>
         <p class="desc">Shown in <em>Clayfornia</em> at California Botanic Garden, where wild flycatchers famously nested in its ears.</p>
       </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/rosie.jpg" alt="White ceramic female figure in a cap with a bird perched on top and a wreath of flowers at the waist"></div>
+      <a class="work" href="/work.html" data-frames="/img/wolf.jpg|/img/wolf-2.jpg|/img/wolf-3.jpg|/img/wolf-4.jpg">
+        <div class="ph"><img src="/img/wolf.jpg" alt="Seated ceramic wolf figure in a white tank top holding a rose, with a lizard on its knee"><span class="count">4 frames</span></div>
+        <div class="meta"><h3>Wolf</h3><span class="dim">seated &middot; glazed ceramic</span></div>
+        <p class="desc">A wolf at rest in a tank top and sneakers, rose in hand, lizard on knee. Folklore recast in the everyday.</p>
+      </a>
+      <a class="work" href="/work.html" data-frames="/img/rosie.jpg|/img/rosie-2.jpg|/img/rosie-3.jpg|/img/rosie-4.jpg">
+        <div class="ph"><img src="/img/rosie.jpg" alt="White ceramic female figure in a cap with a bird perched on top and a wreath of flowers at the waist"><span class="count">4 frames</span></div>
         <div class="meta"><h3>Rosie</h3><span class="dim">outdoor &middot; ceramic</span></div>
         <p class="desc">Figure in a cap, bird overhead, garlanded in ceramic blossoms. Shown in <em>Clayfornia</em>, California Botanic Garden.</p>
       </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/blackbirds.jpg" alt="Two black ceramic bird figures with tall crests seated together on a low stone wall"></div>
-        <div class="meta"><h3>Stonehenge Birds</h3><span class="dim">outdoor &middot; ceramic</span></div>
-        <p class="desc">Crested bird figures standing sentinel among the sage. Shown in <em>Clayfornia</em> at California Botanic Garden.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/ostrich.jpg" alt="Tall ceramic ostrich-like bird with painted feathers and striped legs standing in native garden"></div>
-        <div class="meta"><h3>Big Bird</h3><span class="dim">outdoor &middot; ceramic</span></div>
-        <p class="desc">The striped-legged bird from the studio, finished and standing tall among the agaves.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/sentinels.jpg" alt="Three tall carved ceramic totem forms rising from a bed of agaves like flower stalks"></div>
-        <div class="meta"><h3>Agave Stalks</h3><span class="dim">outdoor &middot; ceramic</span></div>
-        <p class="desc">Totemic forms rising from the agave bed like bloom stalks. Title to be confirmed.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/rat.jpg" alt="Ceramic figure with a rodent head wearing a hat, blouse and blue shorts standing among redwoods"></div>
-        <div class="meta"><h3>Dressed Rat</h3><span class="dim">outdoor &middot; ceramic</span></div>
-        <p class="desc">A dapper rodent in hat and shorts among the redwoods. Title to be confirmed.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/strawberry.jpg" alt="Monumental red ceramic strawberry with sculpted green calyx, with a tall green stalk figure behind"></div>
-        <div class="meta"><h3>Strawberry</h3><span class="dim">monumental &middot; glazed ceramic</span></div>
-        <p class="desc">A strawberry at boulder scale, its calyx modeled leaf by leaf. Title to be confirmed.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/asparagus.jpg" alt="Three tall pale green ceramic asparagus spears standing together in a garden bed"></div>
-        <div class="meta"><h3>Asparagus</h3><span class="dim">outdoor &middot; glazed ceramic</span></div>
-        <p class="desc">Three spears standing like a family group at the garden's edge. Title to be confirmed.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/tiger.jpg" alt="Reclining ceramic tiger figure in a patterned camisole, seated against a clipped hedge"></div>
-        <div class="meta"><h3>Tiger</h3><span class="dim">seated &middot; glazed ceramic</span></div>
-        <p class="desc">A big cat at ease, dressed and unbothered, holding court by the hedge. Title to be confirmed.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/pomegranate.jpg" alt="Split ceramic pomegranate resting on a stacked stone plinth in a courtyard garden"></div>
-        <div class="meta"><h3>Pomegranate</h3><span class="dim">outdoor &middot; glazed ceramic</span></div>
-        <p class="desc">A split fruit raised on a stacked stone plinth, grown from the garden's own pomegranate trees. Title to be confirmed.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/handstand.jpg" alt="Ceramic figure balancing upside down in a handstand with bare feet crossed overhead"></div>
+      <a class="work" href="/work.html" data-frames="/img/handstand.jpg|/img/handstand-2.jpg|/img/handstand-3.jpg">
+        <div class="ph"><img src="/img/handstand.jpg" alt="Ceramic figure balancing upside down in a handstand with bare feet crossed overhead"><span class="count">3 frames</span></div>
         <div class="meta"><h3>Handstand</h3><span class="dim">life-size &middot; glazed ceramic</span></div>
         <p class="desc">A figure inverted, feet crossed against the sky, toes dotted in blue. Title to be confirmed.</p>
       </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/pig.jpg" alt="Ceramic pig in a red bandana beside a seated companion figure in a hat near a courtyard wall"></div>
-        <div class="meta"><h3>Pig &amp; Companion</h3><span class="dim">outdoor &middot; glazed ceramic</span></div>
-        <p class="desc">A bandana-wearing pig and its seated companion keeping watch by the courtyard. Title to be confirmed.</p>
+      <a class="work" href="/work.html" data-frames="/img/tiger.jpg|/img/tiger-2.jpg">
+        <div class="ph"><img src="/img/tiger.jpg" alt="Reclining ceramic tiger figure in a patterned camisole, seated against a clipped hedge"><span class="count">2 frames</span></div>
+        <div class="meta"><h3>Tiger</h3><span class="dim">seated &middot; glazed ceramic</span></div>
+        <p class="desc">A big cat at ease, dressed and unbothered, holding court by the hedge. Title to be confirmed.</p>
       </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/pumpkin.jpg" alt="Large orange ceramic pumpkin with deep ribs sitting on dry ground beside agaves"></div>
-        <div class="meta"><h3>Pumpkin</h3><span class="dim">outdoor &middot; glazed ceramic</span></div>
-        <p class="desc">A deeply ribbed pumpkin settled in among the agaves. Title to be confirmed.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/blossom-vessel.jpg" alt="Ceramic vessel crowned with an armful of large white sculpted blossoms, with inscriptions on the body"></div>
-        <div class="meta"><h3>Blossom Vessel</h3><span class="dim">outdoor &middot; glazed ceramic</span></div>
-        <p class="desc">A vessel crowned in white blossoms, its body carrying handwritten inscriptions. Title to be confirmed.</p>
-      </a>
-      <a class="work" href="#">
-        <div class="ph"><img src="img/orchard-figure.jpg" alt="Ceramic figure with hands raised to its head standing among tall palm trunks in golden light"></div>
+      <a class="work" href="/work.html" data-frames="/img/orchard-figure.jpg|/img/orchard-figure-2.jpg|/img/orchard-figure-3.jpg">
+        <div class="ph"><img src="/img/orchard-figure.jpg" alt="Ceramic figure with hands raised to its head standing among tall palm trunks in golden light"><span class="count">3 frames</span></div>
         <div class="meta"><h3>Among the Palms</h3><span class="dim">outdoor &middot; glazed ceramic</span></div>
         <p class="desc">A figure with hands raised to her head, standing small among the palm trunks. Title to be confirmed.</p>
       </a>
+      <a class="work" href="/work.html" data-frames="/img/pomegranate.jpg|/img/pomegranate-2.jpg|/img/pomegranate-3.jpg">
+        <div class="ph"><img src="/img/pomegranate.jpg" alt="Split ceramic pomegranate resting on a stacked stone plinth in a courtyard garden"><span class="count">3 frames</span></div>
+        <div class="meta"><h3>Pomegranate</h3><span class="dim">outdoor &middot; glazed ceramic</span></div>
+        <p class="desc">A split fruit raised on a stacked stone plinth, grown from the garden's own pomegranate trees. Title to be confirmed.</p>
+      </a>
+    </div>
+    <div class="grid-foot">
+      <span class="note">Nine of eighteen works</span>
+      <a class="arrow-link" href="/work.html">All work <span class="ar">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -433,103 +218,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   </div>
   <div class="lb-cap" id="lbCap"></div>
 </div>
-<script>
-(function(){
-  var burger=document.getElementById('burger'),mnav=document.getElementById('mnav');
-  function toggle(force){
-    var open=typeof force==='boolean'?force:!mnav.classList.contains('open');
-    mnav.classList.toggle('open',open);burger.classList.toggle('open',open);
-    burger.setAttribute('aria-expanded',open);
-    document.body.style.overflow=open?'hidden':'';
-  }
-  burger.addEventListener('click',function(){toggle()});
-  [].slice.call(mnav.querySelectorAll('a')).forEach(function(a){a.addEventListener('click',function(){toggle(false)})});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mnav.classList.contains('open'))toggle(false)});
-})();
-</script>
-<script>
-(function(){
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // reveal targets: work cards (staggered), section heads, about blocks, list rows
-  var targets=[].slice.call(document.querySelectorAll('.work,.sec-head,.about .facts,.about .bio,.exh li,.contact h2,.contact .row'));
-  targets.forEach(function(t,i){t.classList.add('reveal')});
-  [].slice.call(document.querySelectorAll('.work')).forEach(function(w,i){w.style.setProperty('--d',(i%3)*0.09+'s')});
-  if(!reduce&&'IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
-    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-    targets.forEach(function(t){io.observe(t)});
-  }else{
-    targets.forEach(function(t){t.classList.add('in')});
-  }
-  // hero parallax
-  var heroImg=document.querySelector('.hero-img img');
-  if(heroImg&&!reduce){
-    var ticking=false;
-    window.addEventListener('scroll',function(){
-      if(ticking)return;ticking=true;
-      requestAnimationFrame(function(){
-        var y=Math.min(window.scrollY,window.innerHeight);
-        heroImg.style.setProperty('--py',(y*0.12)+'px');
-        ticking=false;
-      });
-    },{passive:true});
-  }
-})();
-</script>
-<script>
-(function(){
-  var works=[].slice.call(document.querySelectorAll('.work')).filter(function(w){return w.querySelector('.ph img')});
-  var lb=document.getElementById('lightbox'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
-  var prevImg=document.getElementById('lbPrevImg'),nextImg=document.getElementById('lbNextImg');
-  var idx=0;
-  function src(i){return works[(i+works.length)%works.length].querySelector('.ph img')}
-  function show(i){
-    idx=(i+works.length)%works.length;
-    var cur=src(idx),p=src(idx-1),n=src(idx+1);
-    img.src=cur.src;img.alt=cur.alt;
-    prevImg.src=p.src;prevImg.alt='';nextImg.src=n.src;nextImg.alt='';
-    var w=works[idx];
-    cap.textContent=w.querySelector('h3').textContent+' \u00b7 '+w.querySelector('.dim').textContent;
-    lb.classList.add('open');document.body.style.overflow='hidden';
-  }
-  function close(){lb.classList.remove('open');document.body.style.overflow=''}
-  works.forEach(function(w,i){
-    w.addEventListener('click',function(e){e.preventDefault();show(i)});
-  });
-  document.getElementById('lbClose').addEventListener('click',close);
-  prevImg.addEventListener('click',function(){show(idx-1)});
-  nextImg.addEventListener('click',function(){show(idx+1)});
-  lb.addEventListener('click',function(e){if(e.target===lb)close()});
-  document.addEventListener('keydown',function(e){
-    if(!lb.classList.contains('open'))return;
-    if(e.key==='Escape')close();
-    if(e.key==='ArrowLeft')show(idx-1);
-    if(e.key==='ArrowRight')show(idx+1);
-  });
-  // touch swipe
-  var tx=null,ty=null;
-  lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
-  lb.addEventListener('touchend',function(e){
-    if(tx===null)return;
-    var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
-    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){dx<0?show(idx+1):show(idx-1)}
-    else if(dy>80&&Math.abs(dy)>Math.abs(dx)){close()}
-    tx=ty=null;
-  },{passive:true});
-})();
-</script>
-<script>
-(function(){
-  var root=document.documentElement,btn=document.getElementById('themeToggle');
-  var saved=null;try{saved=localStorage.getItem('jl-theme')}catch(e){}
-  if(saved==='dark')root.setAttribute('data-theme','dark');
-  btn.addEventListener('click',function(){
-    var dark=root.getAttribute('data-theme')==='dark';
-    if(dark)root.removeAttribute('data-theme');else root.setAttribute('data-theme','dark');
-    try{localStorage.setItem('jl-theme',dark?'light':'dark')}catch(e){}
-  });
-})();
-</script>
+<script src="/js/site.js"></script>
 </body>
 </html>
