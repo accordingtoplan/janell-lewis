@@ -7,7 +7,7 @@ Prototype portfolio site for Janell Lewis, ceramic sculptor (Claremont, CA; resi
 - Repo: `accordingtoplan/janell-lewis`, single branch `main`, GitHub Pages from root
 - CNAME in repo: `janell-lewis.accordingtoplan.co` (per-project subdomain approach). Pages URL: https://accordingtoplan.github.io/janell-lewis/
 - Cloudflare DNS for the subdomain: CNAME `janell-lewis` → `accordingtoplan.github.io`, DNS-only (grey cloud), SSL mode Full
-- Workflow: local repo on F's Mac, F pushes from his own terminal
+- Workflow: design and code sessions run from the local repo on F's Mac; F pushes from his own terminal. Content sessions run through Claude Code on the web and go through a pull request (see "Content sessions" below).
 
 ## Stack and structure
 
@@ -21,12 +21,14 @@ Static site, no build step. Framework-free.
 
 ## Design system
 
-- Fonts: Gloock (display), Archivo (body), IBM Plex Mono (labels, captions, eyebrows), via Google Fonts
-- Two themes on CSS variables (`:root` / `[data-theme="dark"]`), half-circle toggle in nav, persisted in localStorage `jl-theme`, inline head script prevents flash. Light is default.
-  - Light "hardened clay": bg #C9B9A4, text #161310, accent #8A5A28
-  - Dark clay: bg #382D22, text #F0EAE1, accent #B78B4E
-- Sections separate through tonal background bands, no horizontal rules (F's call; only line left is the nav hairline)
-- Favicon: "JL" set in real Gloock, 32/512/apple-touch in `img/`
+- Mood since Oct 2026: black and white, after the 1979 Manhattan one-sheet. Paper, ink, film grain, one typeface.
+- Font: Archivo only, loaded as a variable font with the width axis (`wdth 62..125`, `wght 100..900`). Display (h1, h2, nav brand, mobile menu) is weight 900 at 62% width, uppercase. Work and exhibition titles are weight 300 uppercase. Labels, eyebrows and captions are weight 400 uppercase with light tracking (the `.mono` class name survives from the earlier IBM Plex Mono setup). Gloock and Plex Mono are no longer loaded.
+- Two themes on CSS variables (`:root` / `[data-theme="dark"]`), half-circle toggle in nav, persisted in localStorage `jl-theme`, inline head script prevents flash. Light is default. Variable names (`--black`, `--bone`, `--gold`) predate the palette; `--gold` now equals the ink colour, so there is no accent.
+  - Light paper: bg #F8F7F4, text #111110, secondary #6E6C67, bands #F1F0EC and #EBE9E4
+  - Dark: bg #111110, text #ECEBE7, secondary #8E8C86, bands #161615 and #1B1B19
+- Photography: every `img` is grayscale with raised contrast via a global filter; a noise overlay (`--grain`) sits on the hero, the 404 image and the work thumbnails. Colour originals go in `img/` untouched; the site does the conversion.
+- Sections separate through tonal background bands, no horizontal rules (F's call; only line left is the nav hairline). Thumbnails have no border, no hover zoom; the frame count is plain text over the image.
+- Favicon: "JL" set in Gloock, 32/512/apple-touch in `img/`. Predates the restyle, still to be redone in condensed Archivo.
 - Motion: restrained, Apple-style. Hero cascade, rAF parallax, IntersectionObserver reveals. All off under prefers-reduced-motion.
 - Lightbox: carousel with prev/next peeking at the edges as click targets, keyboard, swipe left/right, swipe down closes, no shadow
 
@@ -36,6 +38,35 @@ Static site, no build step. Framework-free.
 - Copy in Janell's or F's voice: apply the frederik-voice skill. Short declarative sentences.
 - Targeted edits, never full-file rewrites. Nothing gets described as final.
 - Global fixes over per-page patches; styles and behavior live in `css/site.css` and `js/site.js`, not inline.
+
+## Content sessions (Janell's side)
+
+Janell's team updates copy and images themselves through Claude Code on the web. Rosie is the first person doing this; she works in digital marketing and is not technical. Treat any session as a content session unless the person says they are Frederik. In a content session:
+
+**Scope**
+- Edit copy and images only: text, titles, dimensions, years, materials, exhibitions, press, contact details, photos, works added or removed. Files touched: `index.html`, `work.html`, `img/`, and the "Content status" and "Open items" sections of this file.
+- Do not touch `css/site.css`, `js/site.js`, `404.html`, `CNAME`, the page `<head>`, the nav, or any class names. A design or layout request goes to Frederik: say so and stop.
+- Keep every rule under "Rules for any edits". No dashes, short sentences, nothing described as final.
+
+**Facts**
+- Never invent a title, year, dimension, material, venue or credit. If one is missing, ask for it. Leave a marked placeholder (`Title to be confirmed`, `[ To be supplied ]`) rather than a guess.
+- When a working title is confirmed or replaced, remove its "Title to be confirmed" sentence and update "Content status" below.
+
+**Images**
+- Save photos to `img/` as JPG, long edge 1600px (`sips -Z 1600` or equivalent), named after the work in lowercase with hyphens: `heron.jpg`, then `heron-2.jpg`, `heron-3.jpg` for further frames. Never overwrite another work's file.
+- Root-absolute paths (`/img/heron.jpg`). Every image gets a plain, specific `alt`. On `work.html` thumbnails carry `loading="lazy"`; on `index.html` they do not.
+- A work with several frames lists them all in `data-frames="a|b|c"` on the card and shows `<span class="count">N frames</span>` in `.ph`.
+- No photos with recognisable people who have not agreed, and none with children. One was removed for this reason already.
+
+**Adding or removing a work**
+- Copy the structure of an existing `.work` card exactly. On `work.html`, place it in the right section (Figures, Animals & Birds, Garden & Still Life). The home page grid is a curated selection of nine: add there only when asked.
+- Update the counts: the eyebrow on `work.html` ("Eighteen works"), the `.grid-foot` note on `index.html` ("Nine of eighteen works"), and the "Content status" line below.
+
+**Before anything goes out**
+1. Make the edit, then describe what changed and where, in plain words. For copy, quote the new text. Keep going until the person is happy.
+2. Wait for an explicit "publish". Nothing is committed before that.
+3. On "publish": commit on a branch named `content/<short-slug>` with a one-line message saying what changed, push the branch, and open a pull request to `main` with the same description. Never push to `main` in a content session.
+4. Tell the person the change is with Frederik for a quick check and will be live a few minutes after approval.
 
 ## Content status
 
