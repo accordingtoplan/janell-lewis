@@ -79,7 +79,6 @@ Verified facts used on the site: AMOCA residency since ~2016 (four years as of A
 - Real titles, years, dimensions, materials for every working-title piece; confirm Rosie and Stonehenge Birds
 - Artist statement (placeholder in About)
 - Education and Collections lines (placeholders in About facts)
-- Contact email (`mailto:hello@example.com` is a marked placeholder)
 - Photography credits (footer placeholder)
 - Exhibitions and press beyond the two documented entries
 - Higher-res originals of the Clayfornia pieces (the Facebook copies are 1080px and it shows in the lightbox)
