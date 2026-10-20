@@ -65,7 +65,7 @@ Janell's team updates copy and images themselves through Claude Code on the web.
 **Before anything goes out**
 1. Make the edit, then describe what changed and where, in plain words. For copy, quote the new text. Keep going until the person is happy.
 2. Wait for an explicit "publish". Nothing is committed before that.
-3. On "publish": commit on a branch named `content/<short-slug>` with a one-line message saying what changed, push the branch, and open a pull request to `main` with the same description. Never push to `main` in a content session.
+3. On "publish": commit with a one-line message saying what changed, push the branch, and open a pull request to `main` with the same description. The branch name does not matter; the session's assigned branch is fine. Never push to `main` in a content session.
 4. Tell the person the change is with Frederik for a quick check and will be live a few minutes after approval.
 
 ## Content status
